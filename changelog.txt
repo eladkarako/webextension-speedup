@@ -1,0 +1,101 @@
+0.202606.23.1831
+* changed the versioning to make edge happy.  
+* speedy-rendering old CSS is mostly still usable. reduces rendering quality for scrolling speed.  
++ manifest v3, added tab-discard. triggered each 1 minute using an alarm. everything that isn't active or audible.  
++ javascript injection just managed by the manifest.json without additional events on the page. tries to mark elements for loading as lazy, it is a feature that is handled by the browser, and as I don't track the DOM adding and updating it is most likely won't effect most dynamic pages. the code sets preload to none, and loading to lazy to all elements the query finds, including ones that might not support it, but in that case it will just be ignored. favoring object attribute instead of direct element setAttribute manipulation.
+* all claims need to be confirmed via benchmarking, as for now it is mostly pre-run.  
+
+2023.01.29.0514
+- removing (commenting-out) 'font-feature-settings'. it breaks a lot of websites that use graphics from fonts.
++ disabling overscroll and snap scroll effects. this is a personal preference. I do not like that websites mess with my scrolling, overscroll and snap scroll makes scrolling unpredictable, and annoying.
+* changing to data-based versioning.
+* changing to manifest-v3, and cleaning up the manifest, using "\u003Call_urls\u003E" (<all_urls>) as a matching pattern and adding 'match_origin_as_fallback' it should allow better injection to weird pages. it does not matter too much.
+
+2.0.5.7
+* using 'pixelated' instead of 'crisp-edges'. 'crisp-edges' not working in all browsers and requires more resources and loading extensions to the rendering engine which slows it down a lot.
++ adding shape and color rendering favoring speed over quality.
+
+2.0.5.6
+* improved CSS error-handling by using smaller blocks-of-attributes
+
+2.0.5.5
++ adding 'image-rendering' to 'crisp-edges' (similar to 'pixelated' but acts when scales when image is scaled down as well). this includes overriding browser extension in proper order in-order to support both old (and firefox) and new browsers.
+
+2.0.5.4
+* removing zero-pad/zero-margin in body/html since some websites relay on those styles.
+
+2.0.5.3
+* fix ':root' (highest node, HTML or SVG) to hide scroolbars at ':fullscreen' (YouTube Fix).
+
+2.0.5.2
+* limit pseudo-selectors.
+
+2.0.5.1
+* fix animation to instead of using '0s' which explicitly disables the transition - using '1ms' which means transition-end events won't break. This fixes bugs in Google-account-login still showing fields as disabled due to animation 'not finished'. This also fixes bugs in Google (re)Captcha and speeds up its transition.
+
+2.0.4.8
+* allow for android app - re-allow touch in various methods (saves 300ms click delay too!).
+* allow for android app - re-allow zoom.
+
+2.0.4.5
++ add vendor-specific variations to the CSS rules.
+
+2.0.4.4
++ zero-duration animation, meaning no-animation, making everything to react faster.
+
+2.0.4.3
+* improving hover/active/focus states too since some rules are more commonly applied to them.
++ speed up by clearing up filters.
+
+2.0.4.2
+* un-'box-shadow' from everything.
+
+2.0.4.1
+* keeping webkit and standard attributes only.
+* updating the font-advanced-typographics list to disable.
+* including generic-page-fix (explicit size and overflow) for faster scroll.
+* re-order definitions, with alignments and improved comments.
+
+2.0.3.5
+- removed normalizer code, favoring overriding anyway...
++ adding another prefix (to make thing generic for copy paste, really just for me...)
+- removing zoom from touch-action, to make it compatible with older browsers too (just "pan-x pan-y")...
+
+2.0.3.4
+* keeping the gentle-inheritance-rule, but modifying the from HTML to * again, to specificall address every element (but w/o ::before/::after yet).
+* adding !important override for every stage start/ready/load again.
+
+2.0.3.3
++ adding same rules at ready/load stages again.
+
+2.0.3.2
+* limiting CSS rule injection to documents initial state.
+
+2.0.3.1
++ non-block font-loading with swap when ready, for faster first-print event (pure CSS!).
+
+2.0.2.1
+* putting all rules on HTML and making everything-else inherit from it instead of putting massive amount of ""different"" (really the same..) rules on each node. reduce CPU even more.
++ quicker rendering of page, due to removing all advanced-font-typographics from the font.
++ disabling font-smoothing, smooth-scrolling and 300ms for mobile-capable devices now makes more sense.
++ loading everything to load even before document wrote anything, allowing better compability (page can override stuff more easily!)
+
+2.0.1.2
+* improve scrolling reactiveness.
+
+2.0.1.1
++ removing 300ms click/touch delay. No JavaScript required!
+* minimized added rules to DOM-ready only.
+
+2.0.0.2
+* engine update through all stages of page's life-cycle.
+
+1.0.0.5
+* addressing all items in the page.
++ overriding text-shadow definition to unset.
+
+1.0.0.3
++ unsetting text-shadow rules to speed up rendering even more (might change look slightly!);
+
+1.0.0.1
++ initial.
