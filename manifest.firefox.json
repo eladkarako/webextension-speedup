@@ -6,6 +6,11 @@
 ,"version"          : "0.202606.23.1831"
 ,"homepage_url"     : "https://github.com/eladkarako/web-extension-speedup/README.md"
 ,"author"           : "Elad Karako"
+,"browser_specific_settings" : {"gecko":{"id"                          : "speedup@webextension"
+                                        ,"data_collection_permissions" : {"required": ["none"]}
+                                        ,"strict_min_version"          : "140.0"
+                                        }
+                               }
 ,"host_permissions" : ["\u003Call_urls\u003E"]
 ,"content_scripts"  : [{"css"                      : ["speedup.css"]
                        ,"matches"                  : ["\u003Call_urls\u003E"]
