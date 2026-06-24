@@ -2,11 +2,27 @@ speedup
 
 <img src="icon.png" />  
 
-- discard non-active, non-auditable tabs.  
+- discard tabs that are not active nor auditable (playing).
 - CSS to reduce rendering quality.  
 - JS to set lazy loading and no preloading of media.  
 
 <img src="screenshot_1.png" />  
+
+<hr/>
+
+expected issues, by design.  
+
+when a tab is clicked or switched to,  
+it will be restored which often also refresh it.  
+this might not be suitable for login pages, or forms.  
+it can be really annoying when you switch between two tabs.  
+for now, you can move one of the tabs to a new windows,  
+
+jagged lines in every graphic resource (no antialiasing).  
+
+possible solution is to filter out tabs based on their creation timestamp (sort, pop),  
+but a recent timestamp does not tell you anything about the recent switching order,  
+...and I prefer to not query and maintain the last N switched tabs (I might had to though).
 
 <hr/>
 
