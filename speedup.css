@@ -51,6 +51,11 @@
             -ms-interpolation-mode: nearest-neighbor !important;
                 interpolation-mode: nearest-neighbor !important;
 
+           -webkit-shape-rendering: optimizeSpeed    !important;
+              -moz-shape-rendering: optimizeSpeed    !important;
+               -ms-shape-rendering: optimizeSpeed    !important;
+                   shape-rendering: optimizeSpeed    !important;
+
            -webkit-color-rendering: optimizeSpeed    !important;
               -moz-color-rendering: optimizeSpeed    !important;
                -ms-color-rendering: optimizeSpeed    !important;
