@@ -5,7 +5,8 @@ pushd "%~sdp0"
 mkdir "chrome" 1>nul 2>nul
 pushd "chrome"
 copy /y "..\manifest.chrome.json" ".\manifest.json"
-copy /y "..\_locales"      "."
+mkdir "_locales\en_US" 1>nul 2>nul
+copy /y "..\_locales\en_US\messages.json" ".\_locales\en_US\messages.json"
 copy /y "..\changelog.txt" "."
 copy /y "..\LICENSE"       "."
 copy /y "..\speedup.css"   "."
@@ -18,7 +19,8 @@ popd
 mkdir "firefox" 1>nul 2>nul
 pushd "firefox"
 copy /y "..\manifest.firefox.json" ".\manifest.json"
-copy /y "..\_locales"      "."
+mkdir "_locales\en_US" 1>nul 2>nul
+copy /y "..\_locales\en_US\messages.json" ".\_locales\en_US\messages.json"
 copy /y "..\changelog.txt" "."
 copy /y "..\LICENSE"       "."
 copy /y "..\speedup.css"   "."
