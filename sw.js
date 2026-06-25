@@ -56,7 +56,7 @@ const discard_tabs = async ()=>{
 
 const all_alarms_handler = (alarm)=>{
   if("undefined" !== typeof api.runtime.lastError && null !== api.runtime.lastError){ return true; }
-  if (!alarm || alarm_name !== alarm.name){ return true; }
+  if (!alarm || "alarm_to_discard_tabs" !== alarm.name){ return true; }
 
   discard_tabs()
   .then(()=>{
@@ -74,8 +74,9 @@ queueMicrotask(()=>{
 /* notes:
  * - `api.runtime.lastError`'s getter is consumed via callback to make chromium happy.
  * - `const api = chrome || browser` for Firefox.
- * - `api.alarms.get(alarm_name);` is not needed. creating an alarm with same-name replaces any existing one.
+ * - `api.alarms.get("alarm_to_discard_tabs");` is not needed. creating an alarm with same-name replaces any existing one.
  * - `queueMicrotask` to set hooks since its fast.
+ * - return true is just an old practice for callbacks ;) not really needed.
  * - empty `.then` and `.catch` are for debug purposes. add console.log if needed.
  * - maintaining array of the last 3 recently activated tabs, to avoid discarding them. the data is stored in session storage. tab IDs are not private information, just numbers relevant to order of tabs within current session. data is optional, just to improve user experience, there is a chance recent tabs will be reused more often.
  * licensed under MIT. https://github.com/eladkarako/webextension-speedup/issues/new  
