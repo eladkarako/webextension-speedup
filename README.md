@@ -2,7 +2,7 @@ speedup
 
 <img src="icon.png" />  
 
-- discard tabs that are not active nor auditable (playing).
+- discard tabs that are not active, nor auditable (playing, background), nor the last 3 you've switched-to.
 - CSS to reduce rendering quality.  
 - JS to set lazy loading and no preloading of media.  
 
@@ -12,50 +12,28 @@ speedup
 
 expected issues, by design.  
 
-when a tab is clicked or switched to,  
-it will be restored which often also refresh it.  
-this might not be suitable for login pages, or forms.  
-it can be really annoying when you switch between two tabs.  
-for now, you can move one of the tabs to a new windows,  
-
-jagged lines in every graphic resource (no antialiasing).  
-
-possible solution is to filter out tabs based on their creation timestamp (sort, pop),  
-but a recent timestamp does not tell you anything about the recent switching order,  
-...and I prefer to not query and maintain the last N switched tabs (I might had to though).
+- when a browser restores a discarded tab, it usually reloads it. you might loose information or you'll be presented with a message that a form will be re-sent (if the page was a result of a form).  
+- the web-extension will not discard the last 3 tabs you've recently switched to, on top of current active tabs (might be more than one if you have multiple windows) and audible ones.  
+- expect jagged lines and lower rendering quality (no antialiasing).  
 
 <hr/>
 
 <details>
 <summary>test latest nightly version</summary>
 
-to get the latest (nightly) version, download and unpack  
-https://github.com/eladkarako/webextension-speedup/archive/refs/heads/master.zip  
-- for Chrome (or Edge), copy `manifest.chrome.json` to `manifest.json`. use `chrome://extensions/`, switch ON the developer-mode and click `load unpacked` (select the unpacked folder).  
-- for Firefox make-sure `about:config` has `dom.serviceWorkers.enable` set to `true`,  
-and `devtools.aboutdebugging.new-enabled` also set to `true`,  
-copy `manifest.firefox.json` to `manifest.json`
-which has 
+Chrome/Chromium/Edge/.., and Firefox allow loading a folder of unpacked web-extension.  
+0. download and unpack - https://github.com/eladkarako/webextension-speedup/archive/refs/heads/master.zip
+1. rename either `manifest.chrome.json`, or `manifest.firefox.json` - to `manifest.json` .
+2. use `chrome://extensions/`, or `about:debugging#/runtime/this-firefox` to load up the folder.  
+3. Old Firefox might also need `about:config` to have `dom.serviceWorkers.enable` set to `true` and `devtools.aboutdebugging.new-enabled` also set to `true` .  
 
-```json
-,"background"       : {"service_worker": "sw.js"}
-```
+<hr/>
 
-set to 
+the folder should include those 6 items - `manifest.json`, `icon.png`, `speedup.css`, `speedup.js`, `sw.js`, and the `_locales` folder. that's it.
 
-```json
-,"background"       : {"scripts"    : ["sw.js"]
-                      }
-```
+<hr/>
 
-the open up `about:debugging#/runtime/this-firefox` click `Load Temporary Add-on…` and click the `manifest.json` in the folder.  
-
-the issue here is that firefox based browser ignores what you click, and will look inside the `manifest.json` in that folder. misleading. 
-to be clear I've made sure NOT to include explicitly any `manifest.json` but let you copy the one you want to use to `manifest.json` . 
-
-- https://github.com/mozilla/web-ext/issues/3045#issuecomment-4784791063  
-- https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Background_scripts#specify_the_background_scripts  
-- https://web.archive.org/web/20260624004141/https://developer.chrome.com/docs/extensions/develop/migrate/to-service-workers  
+`zip.cmd` (uses `7z.exe`) is used to automate the copy and zip process.
 
 </details>
 
