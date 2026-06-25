@@ -1,5 +1,5 @@
-26.06.25.1617
-* updating versioning, two digit year moved to major.
+26.6.25
+* updating versioning, two digit year moved to major. just year and month and day, no "patch" (4th used for hours and minutes), removing zero pad I had for month (2nd).
 * CSS - reducing parsing - switched from `*, *::before, *::after` to `:root, body, body *:not(script,noscript,style,template,link,meta,base,head,source)` .
 * CSS - reducing parsing - switched from multiple `*, *::before, *::after` to just one big `:root, body, body *:not(script,noscript,style,template,link,meta,base,head,source)`, it is risky since error will fail all rules after it. I will probably break it to multiple segments after more testings.
 * CSS - `:root` instead of `HTML` (effects SVG).
