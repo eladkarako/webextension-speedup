@@ -8,6 +8,7 @@
 * service-worker - not using i18n for alarm name or storage key. just use plain variable.
 * service-worker - tab query information included by mistake, previously not to include frozen tabs.
 * service-worker - tab query information - adding limitation to normal window type (not popups, not panels, not apps, not developer tools).
+* CSS - transition-duration and transition-delay can not be 0 - it breaks the google login site (and probably more websites), so I've put it to 0.10s (I prefer not to use '.10s' as value in here but have '0.10s'. seems fast enough to trigger the transition event for the javascript - I assume. this was always an issue with disabling the animation totally, the needed event won't fire and you'll end up with some websites that shows infinite animation.
 
 0.202606.23.1831
 * changed the versioning to make edge happy.  
