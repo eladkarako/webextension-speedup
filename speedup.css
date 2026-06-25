@@ -1,185 +1,187 @@
-@charset   "UTF-8";
+@charset "UTF-8";
 
-/*-------------------------------------------------------------------display the page using default-font family, load font-files in background and replace when ready. */
-*,*::before,*::after{
-          -webkit-font-display:   swap  !important;
-             -moz-font-display:   swap  !important;
-              -ms-font-display:   swap  !important;
-               -o-font-display:   swap  !important;
-                  font-display:   swap  !important;
-}
+:root, body, body *:not(script,noscript,style,template,link,meta,base,head,source) {
+/* no antialiasing */
+               -webkit-font-smooth: never     !important;
+                  -moz-font-smooth: never     !important;
+                   -ms-font-smooth: never     !important;
+                       font-smooth: never     !important;
 
+           -moz-osx-font-smoothing: grayscale !important;
+            -webkit-font-smoothing: none      !important;
+               -moz-font-smoothing: none      !important;
+                -ms-font-smoothing: none      !important;
+                    font-smoothing: none      !important;
 
-/*-------------------------------------------------------------------no antialias. */
-*,*::before,*::after{
-           -webkit-font-smooth:   never !important;
-              -moz-font-smooth:   never !important;
-               -ms-font-smooth:   never !important;
-                -o-font-smooth:   never !important;
-                   font-smooth:   never !important;
-        -webkit-font-smoothing:   none  !important;
-           -moz-font-smoothing:   none  !important;
-            -ms-font-smoothing:   none  !important;
-             -o-font-smoothing:   none  !important;
-                font-smoothing:   none  !important;
-}
+/* no pricy effects. removing filter will break some functionality (blur,grayscale..). no antialiasing #2 */
+               -webkit-text-shadow: none !important;
+                  -moz-text-shadow: none !important;
+                   -ms-text-shadow: none !important;
+                       text-shadow: none !important;
 
+                -webkit-box-shadow: none !important;
+                   -moz-box-shadow: none !important;
+                    -ms-box-shadow: none !important;
+                        box-shadow: none !important;
 
-/*-------------------------------------------------------------------no pricy-renderer effects, nor #2 antialias. */
-*,*::before,*::after{
-           -webkit-text-shadow:   none  !important;
-              -moz-text-shadow:   none  !important;
-               -ms-text-shadow:   none  !important;
-                -o-text-shadow:   none  !important;
-                   text-shadow:   none  !important;
-            -webkit-box-shadow:   none  !important;
-               -moz-box-shadow:   none  !important;
-                -ms-box-shadow:   none  !important;
-                 -o-box-shadow:   none  !important;
-                    box-shadow:   none  !important;
-                -webkit-filter:   none  !important;
-                   -moz-filter:   none  !important;
-                    -ms-filter:   none  !important;
-                     -o-filter:   none  !important;
-                        filter:   none  !important;
-}
+                    -webkit-filter: none !important;
+                       -moz-filter: none !important;
+                        -ms-filter: none !important;
+                            filter: none !important;
 
+/* minimal animation. unset is also acceptable but might cause fallback to inherit. 0 might break websites relaying on transitionend . */
+       -webkit-transition-duration: 0s !important;
+          -moz-transition-duration: 0s !important;
+           -ms-transition-duration: 0s !important;
+               transition-duration: 0s !important;
 
-/*-------------------------------------------------------------------minimal animation - instead of using '0s' since it disables the animation and might break Google-account login. - the cause is probably an 'event' that is tracking the transition-end used by Google (to display content when 'the animation is done.' - also removing property to avoid animation if possible.*/
-*,*::before,*::after{
-   -webkit-transition-duration:   unset !important;
-      -moz-transition-duration:   unset !important;
-       -ms-transition-duration:   unset !important;
-        -o-transition-duration:   unset !important;
-           transition-duration:   unset !important;
+          -webkit-transition-delay: 0s !important;
+             -moz-transition-delay: 0s !important;
+              -ms-transition-delay: 0s !important;
+                  transition-delay: 0s !important;
 
-      -webkit-transition-delay:   unset !important;
-         -moz-transition-delay:   unset !important;
-          -ms-transition-delay:   unset !important;
-           -o-transition-delay:   unset !important;
-              transition-delay:   unset !important;
-}
+/* favor simpler scale-algorithm, reduce some blur, crisp pixel-art scaling. */
+           -webkit-image-rendering: pixelated        !important;
+              -moz-image-rendering: pixelated        !important;
+               -ms-image-rendering: pixelated        !important;
+                   image-rendering: pixelated        !important;
 
+        -webkit-interpolation-mode: nearest-neighbor !important;
+           -moz-interpolation-mode: nearest-neighbor !important;
+            -ms-interpolation-mode: nearest-neighbor !important;
+                interpolation-mode: nearest-neighbor !important;
 
-/*-------------------------------------------------------------------favor simpler scale-algorithm (also reduce some blur) */
-*,*::before,*::after{
-       -webkit-image-rendering:   pixelated !important;
-          -moz-image-rendering:   pixelated !important;
-           -ms-image-rendering:   pixelated !important;
-            -o-image-rendering:   pixelated !important;
-               image-rendering:   pixelated !important;
-               
-       -webkit-shape-rendering:   optimizeSpeed !important;
-          -moz-shape-rendering:   optimizeSpeed !important;
-           -ms-shape-rendering:   optimizeSpeed !important;
-            -o-shape-rendering:   optimizeSpeed !important;
-               shape-rendering:   optimizeSpeed !important;
-   
-       -webkit-color-rendering:   optimizeSpeed !important;
-          -moz-color-rendering:   optimizeSpeed !important;
-           -ms-color-rendering:   optimizeSpeed !important;
-            -o-color-rendering:   optimizeSpeed !important;
-               color-rendering:   optimizeSpeed !important;
-}
+           -webkit-color-rendering: optimizeSpeed    !important;
+              -moz-color-rendering: optimizeSpeed    !important;
+               -ms-color-rendering: optimizeSpeed    !important;
+                   color-rendering: optimizeSpeed    !important;
 
+/* no advanced font-typographics */
+            -webkit-text-rendering: optimizeSpeed !important;
+               -moz-text-rendering: optimizeSpeed !important;
+                -ms-text-rendering: optimizeSpeed !important;
+                    text-rendering: optimizeSpeed !important;
 
-/*-------------------------------------------------------------------no advanced font-typographics */
-*,*::before,*::after{
-        -webkit-text-rendering:   optimizeSpeed !important;
-           -moz-text-rendering:   optimizeSpeed !important;
-            -ms-text-rendering:   optimizeSpeed !important;
-             -o-text-rendering:   optimizeSpeed !important;
-                text-rendering:   optimizeSpeed !important;
-          -webkit-font-variant:   none          !important;
-             -moz-font-variant:   none          !important;
-              -ms-font-variant:   none          !important;
-               -o-font-variant:   none          !important;
-                  font-variant:   none          !important;
+              -webkit-font-variant: none          !important;
+                 -moz-font-variant: none          !important;
+                  -ms-font-variant: none          !important;
+                      font-variant: none          !important;
 
-/* sometimes disables graphics from fonts (like font-awesome), so best to keep disabled. */
+/* disabling graphics. for example 'font-awsome'. best kept disabled. */
 /*
- -webkit-font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
-    -moz-font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
-     -ms-font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
-      -o-font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
-         font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
+     -webkit-font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
+        -moz-font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
+         -ms-font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
+             font-feature-settings:   'aalt' 0,'abvf' 0,'abvm' 0,'abvs' 0,'afrc' 0,'akhn' 0,'blwf' 0,'blwm' 0,'blws' 0,'c2pc' 0,'c2sc' 0,'calt' 0,'case' 0,'ccmp' 0,'cfar' 0,'cjct' 0,'clig' 0,'cpct' 0,'cpsp' 0,'cswh' 0,'curs' 0,'cv01' 0,'cv02' 0,'cv03' 0,'cv04' 0,'cv05' 0,'cv06' 0,'cv07' 0,'cv08' 0,'cv09' 0,'cv10' 0,'cv11' 0,'cv12' 0,'cv13' 0,'cv14' 0,'cv15' 0,'cv16' 0,'cv17' 0,'cv18' 0,'cv19' 0,'cv20' 0,'cv21' 0,'cv22' 0,'cv23' 0,'cv24' 0,'cv25' 0,'cv26' 0,'cv27' 0,'cv28' 0,'cv29' 0,'cv30' 0,'cv31' 0,'cv32' 0,'cv33' 0,'cv34' 0,'cv35' 0,'cv36' 0,'cv37' 0,'cv38' 0,'cv39' 0,'cv40' 0,'cv41' 0,'cv42' 0,'cv43' 0,'cv44' 0,'cv45' 0,'cv46' 0,'cv47' 0,'cv48' 0,'cv49' 0,'cv50' 0,'cv51' 0,'cv52' 0,'cv53' 0,'cv54' 0,'cv55' 0,'cv56' 0,'cv57' 0,'cv58' 0,'cv59' 0,'cv60' 0,'cv61' 0,'cv62' 0,'cv63' 0,'cv64' 0,'cv65' 0,'cv66' 0,'cv67' 0,'cv68' 0,'cv69' 0,'cv70' 0,'cv71' 0,'cv72' 0,'cv73' 0,'cv74' 0,'cv75' 0,'cv76' 0,'cv77' 0,'cv78' 0,'cv79' 0,'cv80' 0,'cv81' 0,'cv82' 0,'cv83' 0,'cv84' 0,'cv85' 0,'cv86' 0,'cv87' 0,'cv88' 0,'cv89' 0,'cv90' 0,'cv91' 0,'cv92' 0,'cv93' 0,'cv94' 0,'cv95' 0,'cv96' 0,'cv97' 0,'cv98' 0,'cv99' 0,'dist' 0,'dlig' 0,'dnom' 0,'dtls' 0,'expt' 0,'falt' 0,'fin2' 0,'fin3' 0,'fina' 0,'flac' 0,'frac' 0,'fwid' 0,'half' 0,'haln' 0,'halt' 0,'hist' 0,'hkna' 0,'hlig' 0,'hngl' 0,'hojo' 0,'hwid' 0,'init' 0,'isol' 0,'ital' 0,'jalt' 0,'jp04' 0,'jp78' 0,'jp83' 0,'jp90' 0,'kern' 0,'lfbd' 0,'liga' 0,'ljmo' 0,'lnum' 0,'locl' 0,'ltra' 0,'ltrm' 0,'mark' 0,'med2' 0,'medi' 0,'mgrk' 0,'mkmk' 0,'mset' 0,'nalt' 0,'nlck' 0,'nukt' 0,'numr' 0,'onum' 0,'opbd' 0,'ordn' 0,'ornm' 0,'palt' 0,'pcap' 0,'pkna' 0,'pnum' 0,'pref' 0,'pres' 0,'pstf' 0,'psts' 0,'pwid' 0,'qwid' 0,'rand' 0,'rclt' 0,'rkrf' 0,'rlig' 0,'rphf' 0,'rtbd' 0,'rtla' 0,'rtlm' 0,'ruby' 0,'rvrn' 0,'salt' 0,'sinf' 0,'size' 0,'smcp' 0,'smpl' 0,'ss01' 0,'ss02' 0,'ss03' 0,'ss04' 0,'ss05' 0,'ss06' 0,'ss07' 0,'ss08' 0,'ss09' 0,'ss10' 0,'ss11' 0,'ss12' 0,'ss13' 0,'ss14' 0,'ss15' 0,'ss16' 0,'ss17' 0,'ss18' 0,'ss19' 0,'ss20' 0,'ss**' 0,'ssty' 0,'stch' 0,'subs' 0,'sups' 0,'swsh' 0,'titl' 0,'tjmo' 0,'tnam' 0,'tnum' 0,'trad' 0,'twid' 0,'unic' 0,'valt' 0,'vatu' 0,'vert' 0,'vhal' 0,'vjmo' 0,'vkna' 0,'vkrn' 0,'vpal' 0,'vrt2' 0,'vrtr' 0,'zero' 0 !important;
 */
+
+/* no smooth-scroll, instant scroll, no momentum-touch, immediately stops when scroll stops, no bounce, no snap scroll. */
+           -webkit-scroll-behavior: auto   !important;
+              -moz-scroll-behavior: auto   !important;
+               -ms-scroll-behavior: auto   !important;
+                   scroll-behavior: auto   !important;
+
+        -webkit-overflow-scrolling: auto   !important;
+           -moz-overflow-scrolling: auto   !important;
+            -ms-overflow-scrolling: auto   !important;
+                overflow-scrolling: auto   !important;
+
+     -webkit-overscroll-behavior-x: unset  !important;
+        -moz-overscroll-behavior-x: unset  !important;
+         -ms-overscroll-behavior-x: unset  !important;
+             overscroll-behavior-x: unset  !important;
+
+     -webkit-overscroll-behavior-y: unset  !important;
+        -moz-overscroll-behavior-y: unset  !important;
+         -ms-overscroll-behavior-y: unset  !important;
+             overscroll-behavior-y: unset  !important;
+
+ -webkit-overscroll-behavior-block: unset  !important;
+    -moz-overscroll-behavior-block: unset  !important;
+     -ms-overscroll-behavior-block: unset  !important;
+         overscroll-behavior-block: unset  !important;
+
+-webkit-overscroll-behavior-inline: unset  !important;
+   -moz-overscroll-behavior-inline: unset  !important;
+    -ms-overscroll-behavior-inline: unset  !important;
+        overscroll-behavior-inline: unset  !important;
+
+       -webkit-overscroll-behavior: unset  !important;
+          -moz-overscroll-behavior: unset  !important;
+           -ms-overscroll-behavior: unset  !important;
+               overscroll-behavior: unset  !important;
+
+       --tw-scroll-snap-strictness: 0;
+          -webkit-scroll-snap-type: none   !important;
+             -moz-scroll-snap-type: none   !important;
+              -ms-scroll-snap-type: none   !important;
+                  scroll-snap-type: none   !important;
+  
+         -webkit-scroll-snap-align: none   !important;
+            -moz-scroll-snap-align: none   !important;
+             -ms-scroll-snap-align: none   !important;
+                 scroll-snap-align: none   !important;
+
+          -webkit-scroll-snap-stop: normal !important;
+             -moz-scroll-snap-stop: normal !important;
+              -ms-scroll-snap-stop: normal !important;
+                  scroll-snap-stop: normal !important;
+
+           -webkit-scroll-behavior: auto   !important;
+              -moz-scroll-behavior: auto   !important;
+               -ms-scroll-behavior: auto   !important;
+                   scroll-behavior: auto   !important;
+
+            -webkit-scroll-padding: unset  !important;
+               -moz-scroll-padding: unset  !important;
+                -ms-scroll-padding: unset  !important;
+                    scroll-padding: unset  !important;
+
+             -webkit-scroll-margin: unset  !important;
+                -moz-scroll-margin: unset  !important;
+                 -ms-scroll-margin: unset  !important;
+                     scroll-margin: unset  !important;
+
+/* disables double-click to zoom, allowing browser to disable 300ms delay while it tries to understand if to zoom a page or click a link or section below the pointer. old+shorthand. */
+              -webkit-touch-action: pan-x pan-y pinch-zoom  !important;
+                 -moz-touch-action: pan-x pan-y pinch-zoom  !important;
+                  -ms-touch-action: pan-x pan-y pinch-zoom  !important;
+                      touch-action: pan-x pan-y pinch-zoom  !important;
+              -webkit-touch-action: manipulation            !important;
+                 -moz-touch-action: manipulation            !important;
+                  -ms-touch-action: manipulation            !important;
+                      touch-action: manipulation            !important;
 }
 
-
-/*-------------------------------------------------------------------no smooth-scroll */
-*,*::before,*::after{
-       -webkit-scroll-behavior:   auto !important;
-          -moz-scroll-behavior:   auto !important;
-           -ms-scroll-behavior:   auto !important;
-            -o-scroll-behavior:   auto !important;
-               scroll-behavior:   auto !important; /*instant scroll.*/
-    -webkit-overflow-scrolling:   auto !important;
-       -moz-overflow-scrolling:   auto !important;
-        -ms-overflow-scrolling:   auto !important;
-         -o-overflow-scrolling:   auto !important;
-            overflow-scrolling:   auto !important; /*no momentum-touch, immediately stop when scroll-stops.*/
-
-overscroll-behavior-x : unset !important;/*no bounce*/
-overscroll-behavior-y : unset !important;
-overscroll-behavior-block   : unset !important;
-overscroll-behavior-inline  : unset !important;
-overscroll-behavior         : unset !important;
-}
-
-/*-------------------------------------------------------------------no snap */
-*,*::before,*::after{
-  --tw-scroll-snap-strictness : 0;
-  scroll-snap-type    : none   !important;
-  scroll-snap-align   : none   !important;
-  scroll-snap-stop    : normal !important;
-
-  scroll-behavior     : auto   !important;
-  scroll-padding      : unset  !important;
-  scroll-margin       : unset  !important;
-}
-
-/*-------------------------------------------------------------------no click delay. */
-*,*::before,*::after{
-          -webkit-touch-action:   pan-x pan-y pinch-zoom !important;
-             -moz-touch-action:   pan-x pan-y pinch-zoom !important;
-              -ms-touch-action:   pan-x pan-y pinch-zoom !important;
-               -o-touch-action:   pan-x pan-y pinch-zoom !important;
-                  touch-action:   pan-x pan-y pinch-zoom !important;
-          -webkit-touch-action:   manipulation !important;
-             -moz-touch-action:   manipulation !important;
-              -ms-touch-action:   manipulation !important;
-               -o-touch-action:   manipulation !important;
-                  touch-action:   manipulation !important;
-}
-
-
-/*-------------------------------------------------------------------explicit page-size for faster scroll + effective 'height' attribute fixes glitches in BODY children. */
-:root,html,body{
+/* normalize height for HTML and BODY for the sub-tree to inherit it properly. taken from my CSS zero. isn't specifically speed related, but helps with some quirky websites. */
+:root,body{
   height: 100% !important;
    width: 100% !important;
-/*
- padding: 0px  !important;
-  margin: 0px  !important;
-*/
 }
 
-
-/*-------------------------------------------------------------------faster scroll. */
+/* one of the single most effective changes for speed! let BODY overflow into the :root (HTML). seems to be optimized by the browser! */
 body{ overflow      : visible    !important;}
-:root,html{overflow      : auto       !important;}
-:root,html{white-space   : normal     !important;}
-:root,html{
-      word-break    : normal  !important;
+:root{overflow      : auto       !important;}
+:root{white-space   : normal     !important;}
+:root{
+      word-break    : normal     !important;
       overflow-wrap : break-word !important;
     /*overflow-wrap : anywhere   !important;*/
       word-wrap     : break-word !important;
     /*line-break    : anywhere   !important;*/
 }
 
-
-/*-------------------------------------------------------------------hide scrollbars at fullscreen. */
+/* quick-fix to avoid "fullscreen" pseudo container from having scrollbars. */
 :root:-webkit-full-screen { overflow:hidden !important;}
 :root:-moz-full-screen {    overflow:hidden !important;}
 :root:-ms-fullscreen {      overflow:hidden !important;}
 :root:fullscreen{           overflow:hidden !important;}
+
+/* notes:
+ * - trying to have a generic override to avoid parsing making the page slow.
+ * - browser prefixes are added since pages might include those.
+ * - expect slightly uglier graphics but faster and more reactive pages and scroll.
+ * licensed under MIT. https://github.com/eladkarako/webextension-speedup/issues/new  
+ *
+ * ░▒▓█■═▬─—▄▀
+ */
