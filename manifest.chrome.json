@@ -3,7 +3,7 @@
 ,"name"             : "__MSG_name_long__"
 ,"short_name"       : "__MSG_name_shrt__"
 ,"description"      : "__MSG_name_desc__"
-,"version"          : "26.06.23.1831"
+,"version"          : "26.06.25.1617"
 ,"homepage_url"     : "https://github.com/eladkarako/web-extension-speedup/README.md"
 ,"author"           : "Elad Karako"
 ,"host_permissions" : ["\u003Call_urls\u003E"]
@@ -30,6 +30,6 @@
                       }]
 ,"icons"            : {"128" : "icon.png"}
 ,"background"       : {"service_worker": "sw.js"}
-,"permissions"      : ["tabs", "alarms"]
+,"permissions"      : ["tabs", "alarms", "storage"]
 ,"action"           : {}
 }
