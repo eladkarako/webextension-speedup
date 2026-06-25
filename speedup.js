@@ -20,8 +20,10 @@
     return elements;
   };
 
-  action().then(elements=>{
-  }).catch(err=>{
+  action()
+  .then(elements=>{
+  })
+  .catch(err=>{
   });
 
 })();
