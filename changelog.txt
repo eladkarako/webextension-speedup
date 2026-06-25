@@ -1,3 +1,14 @@
+26.06.25.1617
+* updating versioning, two digit year moved to major.
+* CSS - reducing parsing - switched from `*, *::before, *::after` to `:root, body, body *:not(script,noscript,style,template,link,meta,base,head,source)` .
+* CSS - reducing parsing - switched from multiple `*, *::before, *::after` to just one big `:root, body, body *:not(script,noscript,style,template,link,meta,base,head,source)`, it is risky since error will fail all rules after it. I will probably break it to multiple segments after more testings.
+* CSS - `:root` instead of `HTML` (effects SVG).
+* CSS - adding browser prefixes everywhere, to override websites that use those.
+* service-worker - maintaining IDs 3 (`max_ids_of_recently_activated_tabs_to_keep`) most recently activate tabs. on top of the query that already ignores active and audible, it is just to make sure switching back to recently activated tab won't trigger it to restore and often refresh.
+* service-worker - not using i18n for alarm name or storage key. just use plain variable.
+* service-worker - tab query information included by mistake, previously not to include frozen tabs.
+* service-worker - tab query information - adding limitation to normal window type (not popups, not panels, not apps, not developer tools).
+
 0.202606.23.1831
 * changed the versioning to make edge happy.  
 * speedy-rendering old CSS is mostly still usable. reduces rendering quality for scrolling speed.  
