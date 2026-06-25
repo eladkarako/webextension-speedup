@@ -1,5 +1,4 @@
-{ "name_shrt"  : {"message": "speedup"               }
-, "name_long"  : {"message": "speedup"               }
-, "name_desc"  : {"message": "discard non-active, non-auditable tabs. CSS to reduce rendering quality. JS to set lazy loading and no preloading of media."  }
-, "alarm_name" : {"message": "alarm_to_discard_tabs" }
+{ "name_shrt"   : {"message": "speedup"                        }
+, "name_long"   : {"message": "speedup"                        }
+, "name_desc"   : {"message": "discard non-active, non-auditable tabs. CSS to reduce rendering quality. JS to set lazy loading and no preloading of media."  }
 }
