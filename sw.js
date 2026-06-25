@@ -1,32 +1,26 @@
 "use strict";
-
-/* - register a 1 minute alarm.
- * - discard all tabs that are not recently activated, nor audible.
- *
- * - note. storing the last 3 IDs, of the most recently activated tabs. (IDs are relevant to current browser session. storage is kept for session as well).
- */
-
 const api = chrome || browser || {runtime:{lastError:true}};
 
 const installed_handler = (details)=>{
   if("undefined" !== typeof api.runtime.lastError && null !== api.runtime.lastError){ return true; }
   api.alarms.create("alarm_to_discard_tabs", {periodInMinutes : 1.0})
-    .then(alarm=>{ 
-    })
-    .catch(err=>{ 
-    });
+  .then(alarm=>{ 
+  })
+  .catch(err=>{ 
+  });
 };
 
 const add_id = async (id)=>{
-  let ids = ((await api.storage.session.get("ids")) || {"ids":[]})["ids"];
-  ids.unshift(id);
-  ids.length = 3;
-  return api.storage.session.set({"ids":ids});
+  const IDS_MAX_LENGTH = 3;
+  const o = await api.storage.session.get("ids");
+  o.ids = o.ids || [];
+  o.ids.unshift(id);
+  o.ids.length = IDS_MAX_LENGTH;
+  return api.storage.session.set(o);
 };
 
 const tab_activated_handler = (tab_active_info)=>{
   if("undefined" !== typeof api.runtime.lastError && null !== api.runtime.lastError){ return true; }
-
   add_id(tab_active_info.tabId)
   .then(()=>{
   })
@@ -36,8 +30,9 @@ const tab_activated_handler = (tab_active_info)=>{
 
 const discard_single_tab = async (tab)=>{
   if(!tab.id){return true;}
-  const ids = ((await api.storage.session.get("ids")) || {"ids":[]}).ids;
-  const is_recently_activated = (-1 !== ids.indexOf(tab.id));
+  const o = await api.storage.session.get("ids");
+  o.ids = o.ids || [];
+  const is_recently_activated = (-1 !== o.ids.indexOf(tab.id));
   if(true === is_recently_activated){return true;}
   return api.tabs.discard(tab.id);
 };
@@ -78,7 +73,14 @@ queueMicrotask(()=>{
  * - `queueMicrotask` to set hooks since its fast.
  * - return true is just an old practice for callbacks ;) not really needed.
  * - empty `.then` and `.catch` are for debug purposes. add console.log if needed.
- * - maintaining array of the last 3 recently activated tabs, to avoid discarding them. the data is stored in session storage. tab IDs are not private information, just numbers relevant to order of tabs within current session. data is optional, just to improve user experience, there is a chance recent tabs will be reused more often.
+ *
+ *
+ * - register a 1 minute alarm.
+ * - discard all tabs that are not active, audible, or in a list of 3 IDs of 3 most recently "switched-to" tabs.
+ * - the 3 tab-id of recently switched-to tabs, is relevant to current browser session, 
+ * - it is stored in a local, temporary session-storage too (deleted when browser restarts).
+ * - it is considered volatile, and optional, just to improve user experience and make this web-extension more seamless.
+ *
  * licensed under MIT. https://github.com/eladkarako/webextension-speedup/issues/new  
  *
  * ░▒▓█■═▬─—▄▀
