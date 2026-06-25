@@ -1,3 +1,6 @@
+26.6.26
+* adding restriction to only handle tabs that finished loading. it won't help with a browser-related "bug", that reloading few discarded tabs would make the browser (Firefox) hang, but it might help with initial startup that might be load up previous session of opened tabs, or if used opened a lot of tabs from the bookmarks. I assumed the browser would have ignored the discard call (as the feature is handled by the browser) - just to be sure.  
+
 26.6.25
 * updating versioning, two digit year moved to major. just year and month and day, no "patch" (4th used for hours and minutes), removing zero pad I had for month (2nd).
 * CSS - reducing parsing - switched from `*, *::before, *::after` to `:root, body, body *:not(script,noscript,style,template,link,meta,base,head,source)` .

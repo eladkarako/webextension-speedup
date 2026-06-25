@@ -3,7 +3,7 @@ const api = chrome || browser || {runtime:{lastError:true}};
 
 const installed_handler = (details)=>{
   if("undefined" !== typeof api.runtime.lastError && null !== api.runtime.lastError){ return true; }
-  api.alarms.create("alarm_to_discard_tabs", {periodInMinutes : 1.0})
+  api.alarms.create("alarm_to_discard_tabs", {periodInMinutes:1.0})
   .then(alarm=>{ 
   })
   .catch(err=>{ 
@@ -39,6 +39,7 @@ const discard_single_tab = async (tab)=>{
 
 const discard_tabs = async ()=>{
   let tabs = await api.tabs.query({active:false, audible:false, discarded:false, WindowType:"normal"});
+  tabs = tabs.filter(tab=>("complete" === tab.status));
   const settled_results = await Promise.allSettled(tabs.map(tab=>(discard_single_tab(tab))));
   tabs = tabs.map((tab,index)=>{
     const o = {};
