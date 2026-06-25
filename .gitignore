@@ -1,4 +1,6 @@
+/chrome/
 /chrome/*
+/firefox/
 /firefox/*
 
 /chrome.zip
