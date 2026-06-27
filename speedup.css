@@ -13,17 +13,19 @@
                 -ms-font-smoothing: none      !important;
                     font-smoothing: none      !important;
 
-/* no pricy effects. removing filter will break some functionality (blur,grayscale..). no antialiasing #2 */
+/* no pricy per-character effects. removing filter will break some functionality (blur,grayscale..). no antialiasing #2 */
                -webkit-text-shadow: none !important;
                   -moz-text-shadow: none !important;
                    -ms-text-shadow: none !important;
                        text-shadow: none !important;
 
+/* box-shadow isn't that pricy so I'll allow it. */
+/*
                 -webkit-box-shadow: none !important;
                    -moz-box-shadow: none !important;
                     -ms-box-shadow: none !important;
                         box-shadow: none !important;
-
+*/
                     -webkit-filter: none !important;
                        -moz-filter: none !important;
                         -ms-filter: none !important;
