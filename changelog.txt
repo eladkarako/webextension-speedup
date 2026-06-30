@@ -1,3 +1,6 @@
+26.7.1
+- transition-delay is making a lot of issues with youtube player resize, so I have removed it.
+
 26.6.27
 - box-shadow is allowed again.
 

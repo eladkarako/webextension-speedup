@@ -36,11 +36,12 @@
           -moz-transition-duration: 0.10s !important;
            -ms-transition-duration: 0.10s !important;
                transition-duration: 0.10s !important;
-
+/*
           -webkit-transition-delay: 0.10s !important;
              -moz-transition-delay: 0.10s !important;
               -ms-transition-delay: 0.10s !important;
                   transition-delay: 0.10s !important;
+*/
 
 /* favor simpler scale-algorithm, reduce some blur, crisp pixel-art scaling. */
            -webkit-image-rendering: pixelated        !important;
