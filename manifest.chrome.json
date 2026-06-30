@@ -3,7 +3,7 @@
 ,"name"             : "__MSG_name_long__"
 ,"short_name"       : "__MSG_name_shrt__"
 ,"description"      : "__MSG_name_desc__"
-,"version"          : "26.7.1"
+,"version"          : "26.7.2"
 ,"homepage_url"     : "https://github.com/eladkarako/web-extension-speedup/README.md"
 ,"author"           : "Elad Karako"
 ,"host_permissions" : ["\u003Call_urls\u003E"]

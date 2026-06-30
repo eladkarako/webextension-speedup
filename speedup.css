@@ -32,11 +32,11 @@
                             filter: none !important;
 
 /* minimal animation. unset is also acceptable but might cause fallback to inherit. 0 might break websites relaying on transitionend . */
+/*
        -webkit-transition-duration: 0.10s !important;
           -moz-transition-duration: 0.10s !important;
            -ms-transition-duration: 0.10s !important;
                transition-duration: 0.10s !important;
-/*
           -webkit-transition-delay: 0.10s !important;
              -moz-transition-delay: 0.10s !important;
               -ms-transition-delay: 0.10s !important;
